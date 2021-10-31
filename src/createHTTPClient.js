@@ -15,7 +15,7 @@ const SHARED_HEADERS = Object.freeze({
 
 export default function createHTTPClient(accessToken) {
   const client = axios.create({
-    baseURL: 'https://api.gotinder.com',
+    baseURL: 'https://api.gotinder.com/v2',
     headers: {
       'X-Auth-Token': accessToken,
       ...SHARED_HEADERS,
@@ -47,7 +47,7 @@ export default function createHTTPClient(accessToken) {
     },
 
     getRecommendations() {
-      return client.get('/user/recs').then(response => response.data);
+      return client.get('/recs/core').then(response => response.data);
     },
 
     getUser(userId) {
